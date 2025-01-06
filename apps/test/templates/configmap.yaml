@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-app-config
+data:
+  index.html: |
+    <html>
+      <head><title>Test App</title></head>
+      <body>
+        <h1>{{ .Values.htmlMessage }}</h1>
+      </body>
+    </html>

@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: staging-appset
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/tu-usuario/argocd-examples
+      revision: main
+      directories:
+      - path: apps/* # Detecta todas las carpetas dentro de 'apps/'
+  template:
+    metadata:
+      name: '{{path.basename}}-staging' # Nombre de la app basado en la carpeta
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/tu-usuario/argocd-examples
+        targetRevision: main
+        path: '{{path}}' # Ruta de la carpeta detectada
+        helm:
+          valueFiles:
+          - envs/staging-values.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: staging
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
