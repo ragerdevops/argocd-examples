@@ -11,7 +11,7 @@ spec:
     path: apps/test
     helm:
       valueFiles:
-      - envs/staging/staging-values.yaml
+      - envs/staging/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: test-app
