@@ -21,7 +21,7 @@ spec:
         path: '{{path}}' # Ruta de la carpeta detectada
         helm:
           valueFiles:
-          - envs/production-values.yaml
+          - envs/production/values.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: production

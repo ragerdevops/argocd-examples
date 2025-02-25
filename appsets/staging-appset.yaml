@@ -21,7 +21,7 @@ spec:
         path: '{{path}}' # Ruta de la carpeta detectada
         helm:
           valueFiles:
-          - envs/staging-values.yaml
+          - envs/staging/values.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: staging
