@@ -18,10 +18,10 @@ spec:
       source:
         repoURL: https://github.com/tu-usuario/argocd-examples
         targetRevision: main
-        path: '{{path}}' # Ruta de la carpeta detectada
+        path: '{{path}}/templates' # Ruta de la carpeta detectada
         helm:
           valueFiles:
-          - envs/staging/values.yaml
+          - '{{path}}/envs/staging/values.yaml'
       destination:
         server: https://kubernetes.default.svc
         namespace: staging
